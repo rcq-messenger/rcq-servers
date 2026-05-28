@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "updated_at": "2026-05-28",
+  "servers": [
+    {
+      "url": "https://api.rcq.app",
+      "name": "RCQ (default)",
+      "description": "Default backend operated by the RCQ maintainer. AGPL-3.0 source at github.com/rcq-messenger/rcq-server-ref. Hosted in Frankfurt.",
+      "region": "EU",
+      "operator_contact": "hello@rcq.app",
+      "added_at": "2026-05-28"
+    }
+  ]
+}
