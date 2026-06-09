@@ -6,14 +6,21 @@ match) to populate the "Choose your server" surface on first launch.
 
 [ios]: https://github.com/rcq-messenger/rcq-ios
 
-**This is a catalogue, not a federation layer.** Each RCQ server is an
-isolated island — a user on `alice.example` and a user on
-`api.rcq.app` cannot message each other, even if they happen to share
-the same UIN. Federation is not on the roadmap; see the [server-ref
-README][server-ref] for why. The directory exists so users can find
-*which* island to join, not to bridge across them.
+**This is a catalogue, not the federation layer itself.** Each RCQ
+server is an independent island. *Today* the islands are separate — a
+user on `alice.example` and a user on `api.rcq.app` cannot message
+each other yet, even if they share the same UIN.
 
-[server-ref]: https://github.com/rcq-messenger/rcq-server-ref#self-host-architecture
+Cross-island messaging (**federation**) is on the roadmap and in
+active development. The model is *client-multihoming*: servers stay
+dumb, sealed-sender mailboxes that never talk to each other, and the
+**client** does the cross-island work — fetch the peer's key bundle
+from their island, seal to it, and deposit it into their island's
+queue. This directory is what makes islands discoverable (and it
+powers the [fed.rcq.app][fed] map); it helps you find *which* island
+to join. It doesn't bridge islands — the client will.
+
+[fed]: https://fed.rcq.app
 
 ## What's here
 
