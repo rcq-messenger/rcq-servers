@@ -11,7 +11,7 @@
       "added_at": "2026-05-28"
     },
     {
-      "url": "https://is2.165-22-95-218.sslip.io",
+      "url": "https://is2.rcq.app",
       "name": "RCQ federation demo (is2)",
       "description": "A second independent RCQ island, run by the maintainer for trying cross-island federation during beta. Register here, then message users on the flagship (api.rcq.app) from the web client at chat.rcq.app — add them as uin@api.rcq.app. Demo instance: account keys and data live only on this server, no push notifications. Hosted in Frankfurt.",
       "region": "EU",
