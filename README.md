@@ -41,7 +41,8 @@ to join. It doesn't bridge islands — the client will.
       "description": "What this instance is for (≤ 240 chars)",
       "region": "EU | US | AP | SA | AF | ME",
       "operator_contact": "email@example.com OR https://example.com/contact",
-      "added_at": "YYYY-MM-DD"
+      "added_at": "YYYY-MM-DD",
+      "auto_backup": false
     }
   ]
 }
@@ -65,6 +66,12 @@ Field rules:
 * **`added_at`** — date the entry was merged into this repo. Set by
   the maintainer at merge time; PR authors can leave it as a
   placeholder.
+* **`auto_backup`** — optional, default `false`. Marks islands the
+  apps may pick AUTOMATICALLY when a user enables "keep a backup of
+  my account on another island" (client multihoming). Only set by the
+  maintainer on instances with an availability commitment; regular
+  community entries stay manual-add-only. Clients ignore unknown
+  fields, so older apps are unaffected.
 
 ## How to get your instance listed
 

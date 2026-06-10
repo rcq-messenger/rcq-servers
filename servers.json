@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-06-10",
+  "updated_at": "2026-06-11",
   "servers": [
     {
       "url": "https://api.rcq.app",
@@ -8,7 +8,8 @@
       "description": "Default backend operated by the RCQ maintainer. AGPL-3.0 source at github.com/rcq-messenger/rcq-server-ref. Hosted in Frankfurt.",
       "region": "EU",
       "operator_contact": "hello@rcq.app",
-      "added_at": "2026-05-28"
+      "added_at": "2026-05-28",
+      "auto_backup": true
     },
     {
       "url": "https://is2.rcq.app",
@@ -16,7 +17,8 @@
       "description": "A second independent RCQ island, run by the maintainer for trying cross-island federation during beta. Register here, then message users on the flagship (api.rcq.app) from the web client at chat.rcq.app — add them as uin@api.rcq.app. Demo instance: account keys and data live only on this server, no push notifications. Hosted in Frankfurt.",
       "region": "EU",
       "operator_contact": "hello@rcq.app",
-      "added_at": "2026-06-10"
+      "added_at": "2026-06-10",
+      "auto_backup": true
     }
   ]
 }
