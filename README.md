@@ -66,12 +66,34 @@ Field rules:
 * **`added_at`** — date the entry was merged into this repo. Set by
   the maintainer at merge time; PR authors can leave it as a
   placeholder.
-* **`auto_backup`** — optional, default `false`. Marks islands the
-  apps may pick AUTOMATICALLY when a user enables "keep a backup of
-  my account on another island" (client multihoming). Only set by the
-  maintainer on instances with an availability commitment; regular
-  community entries stay manual-add-only. Clients ignore unknown
-  fields, so older apps are unaffected.
+* **`auto_backup`** — optional, default `false`. Advisory hint that an
+  island is eligible for the apps' "keep a backup of my account on
+  another island" auto-pick (client multihoming). It is NOT what the
+  apps enforce — see `auto-islands.json` below. Only set by the
+  maintainer; clients ignore unknown fields, so older apps are
+  unaffected.
+
+## auto-islands.json — the signed auto-pick list
+
+`servers.json` is a human directory, served over TLS + GitHub trust
+only. That is fine for a user *manually* choosing a server. But the
+"keep a backup on another island" toggle picks an island
+**automatically** and silently registers your account there, so that
+list must be tamper-proof: a forged catalogue could otherwise steer
+where your backup mailbox lands.
+
+So the apps enforce a separate, **Ed25519-signed** file:
+
+* `auto-islands.json` — `{ version, issued_at, islands: [https URLs] }`
+* `auto-islands.json.sig` — base64 Ed25519 signature over the exact
+  bytes of `auto-islands.json`, made with the maintainer key the
+  clients already pin for relay-config.
+
+Clients fetch both, verify the signature over the literal bytes, and
+only then trust the list. A missing or invalid signature means no
+auto-pick (the user can still add an island by hand). Community PRs to
+`servers.json` never touch this file, so they can't break auto-pick.
+Regenerate with `tools/sign-auto-islands.py` in the main RCQ repo.
 
 ## How to get your instance listed
 
