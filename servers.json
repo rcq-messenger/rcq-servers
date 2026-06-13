@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-06-11",
+  "updated_at": "2026-06-13",
   "servers": [
     {
       "url": "https://rcq.project26.cc",
@@ -8,7 +8,7 @@
       "description": "RCQ island operated by Project26, hosted in Netherlands",
       "region": "NL",
       "operator_contact": "veritas@project26.cc",
-      "added_at": "YYYY-pending"
+      "added_at": "2026-06-11"
     },
     {
       "url": "https://api.rcq.app",
