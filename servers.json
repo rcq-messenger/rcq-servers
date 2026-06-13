@@ -3,6 +3,14 @@
   "updated_at": "2026-06-11",
   "servers": [
     {
+      "url": "https://rcq.project26.cc",
+      "name": "Project26's RCQ",
+      "description": "RCQ island operated by Project26, hosted in Netherlands",
+      "region": "NL",
+      "operator_contact": "veritas@project26.cc",
+      "added_at": "YYYY-pending"
+    },
+    {
       "url": "https://api.rcq.app",
       "name": "RCQ (default)",
       "description": "Default backend operated by the RCQ maintainer. AGPL-3.0 source at github.com/rcq-messenger/rcq-server-ref. Hosted in Frankfurt.",
