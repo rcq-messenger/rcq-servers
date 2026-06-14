@@ -1,7 +1,23 @@
 {
   "version": 1,
-  "updated_at": "2026-06-13",
+  "updated_at": "2026-06-15",
   "servers": [
+    {
+      "url": "https://rcqam.mooo.com",
+      "name": "Amsterdam Island",
+      "description": "Public ephemeral RCQ relay in Netherlands. High privacy, automatic message expiration.",
+      "region": "EU",
+      "operator_contact": "ap5858712@gmail.com",
+      "added_at": "2026-06-15"
+    },
+    {
+      "url": "https://rcq.chickenkiller.com",
+      "name": "Singapore Island",
+      "description": "Public ephemeral RCQ relay in Singapore. High privacy, automatic message expiration.",
+      "region": "AP",
+      "operator_contact": "ap5858712@gmail.com",
+      "added_at": "2026-06-15"
+    },
     {
       "url": "https://api.rcq.app",
       "name": "RCQ (default)",
