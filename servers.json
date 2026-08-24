@@ -20,7 +20,7 @@
     },
     {
       "url": "https://api.rcq.app",
-      "name": "RCQ (default)",
+      "name": "RCQ Flagship",
       "description": "Default backend operated by the RCQ maintainer. AGPL-3.0 source at github.com/rcq-messenger/rcq-server-ref. Hosted in Frankfurt.",
       "region": "EU",
       "operator_contact": "hello@rcq.app",
