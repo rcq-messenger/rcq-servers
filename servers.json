@@ -25,7 +25,8 @@
       "region": "EU",
       "operator_contact": "hello@rcq.app",
       "added_at": "2026-05-28",
-      "auto_backup": true
+      "auto_backup": true,
+      "logo": "https://rcq.app/islands/logos/api.rcq.app.png"
     },
     {
       "url": "https://rcq.project26.cc",
