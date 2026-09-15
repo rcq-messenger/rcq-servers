@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-06-15",
+  "updated_at": "2026-09-15",
   "servers": [
     {
       "url": "https://api.rcq.app",
@@ -44,6 +44,14 @@
       "region": "AP",
       "operator_contact": "ap5858712@gmail.com",
       "added_at": "2026-06-15"
+    },
+    {
+      "url": "https://146-190-232-70.sslip.io",
+      "name": "Falcon",
+      "description": "A small private island run out of the US. Open to everyone: no invites, no fees, no ads.",
+      "region": "US",
+      "added_at": "2026-09-15",
+      "auto_backup": true
     }
   ]
 }

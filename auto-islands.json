@@ -1,8 +1,9 @@
 {
   "version": 1,
-  "issued_at": "2026-06-11T00:54:24Z",
+  "issued_at": "2026-09-15T17:11:49Z",
   "islands": [
     "https://api.rcq.app",
-    "https://is2.rcq.app"
+    "https://is2.rcq.app",
+    "https://146-190-232-70.sslip.io"
   ]
 }
