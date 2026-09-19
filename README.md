@@ -7,18 +7,17 @@ match) to populate the "Choose your server" surface on first launch.
 [ios]: https://github.com/rcq-messenger/rcq-ios
 
 **This is a catalogue, not the federation layer itself.** Each RCQ
-server is an independent island. *Today* the islands are separate — a
-user on `alice.example` and a user on `api.rcq.app` cannot message
-each other yet, even if they share the same UIN.
+server is an independent island, and this file only helps you find
+*which* one to join.
 
-Cross-island messaging (**federation**) is on the roadmap and in
-active development. The model is *client-multihoming*: servers stay
-dumb, sealed-sender mailboxes that never talk to each other, and the
-**client** does the cross-island work — fetch the peer's key bundle
-from their island, seal to it, and deposit it into their island's
-queue. This directory is what makes islands discoverable (and it
-powers the [fed.rcq.app][fed] map); it helps you find *which* island
-to join. It doesn't bridge islands — the client will.
+Cross-island messaging (**federation**) is live: write to somebody as
+`uin@their.island` and it reaches them. The model is
+*client-multihoming* — islands stay dumb, sealed-sender mailboxes that
+never talk to each other, and the **client** does the crossing: it
+fetches the peer's key card from their island, seals to it, and
+deposits the envelope in their island's queue. So this directory is
+discovery (and it powers the [fed.rcq.app][fed] map); the bridge is
+the client, not us.
 
 [fed]: https://fed.rcq.app
 
@@ -48,6 +47,15 @@ to join. It doesn't bridge islands — the client will.
 }
 ```
 
+Only **`url`** and **`name`** are required. Every other field has a
+default, because this file is edited by hand and the clients read it
+row by row: a row missing a key is kept and drawn with what it has
+(iOS names it by its host), while a row with no `url` is dropped and
+named in the log. One malformed entry must never cost the whole
+catalogue — it did once, on 2026-09-15, when a missing
+`operator_contact` made iOS reject the file whole and silently keep a
+cached deck.
+
 Field rules:
 
 * **`url`** — must be `https://`. iOS App Transport Security rejects
@@ -59,13 +67,20 @@ Field rules:
 * **`description`** — one or two sentences. Who's it for, what makes
   it noteworthy. Don't sell — the picker is a directory, not an ad.
 * **`region`** — continental tag. Helps users pick a backend close to
-  them for latency. Only the six codes above.
+  them for latency. Only the six codes above: a country code like
+  `NL` is not one of them, and a picker that groups by region will
+  file it under nothing.
 * **`operator_contact`** — an email address OR a URL where users can
   reach the operator. Picker UI may show this so users know who
   they're trusting with their backend.
 * **`added_at`** — date the entry was merged into this repo. Set by
   the maintainer at merge time; PR authors can leave it as a
   placeholder.
+* **`logo`** — optional. A URL to the island's mark, MIRRORED ON THIS
+  SIDE rather than fetched from the island: a picker that loaded each
+  island's own logo would hand the viewer's address to every island in
+  the list, including the ones they scroll past. Absent for an island
+  whose operator never set one, which is the normal case.
 * **`auto_backup`** — optional, default `false`. Advisory hint that an
   island is eligible for the apps' "keep a backup of my account on
   another island" auto-pick (client multihoming). It is NOT what the
@@ -93,7 +108,10 @@ Clients fetch both, verify the signature over the literal bytes, and
 only then trust the list. A missing or invalid signature means no
 auto-pick (the user can still add an island by hand). Community PRs to
 `servers.json` never touch this file, so they can't break auto-pick.
-Regenerate with `tools/sign-auto-islands.py` in the main RCQ repo.
+Signing is maintainer-only: the private half of the ISLAND_LIST key is
+not published anywhere, and there is no public tool to regenerate this
+file. To have an island considered for the auto-pick list, say so in
+your catalogue PR or write to hello@rcq.app.
 
 ## How to get your instance listed
 
@@ -106,7 +124,15 @@ enough for human judgement at this scale.
 
 ## How to consume this catalogue from a client
 
-The canonical URL is the GitHub raw form. Caching is your job — fetch
+Two URLs, **ours first**, and the order matters: `raw.githubusercontent.com`
+is blocked on a good share of the networks a picker is most needed on,
+and `https://rcq.app/servers.json` is reachable there. All three
+shipped clients read them in that order (Android `IslandCatalog.kt`,
+web `island-catalog.ts`, iOS `ServerCatalogue.swift`). The file is
+display-only, so neither host is trusted with anything: the signed
+`auto-islands.json` below is the one that steers a decision.
+
+Caching is your job — fetch
 once on first launch, store locally, refresh on a schedule that's
 gentle on GitHub (no more than once a day per device). Fall back to a
 hardcoded `https://api.rcq.app` entry if the fetch fails for any
