@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15",
+  "updated_at": "2026-09-19",
   "servers": [
     {
       "url": "https://api.rcq.app",
@@ -51,7 +51,8 @@
       "description": "A small private island run out of the US. Open to everyone: no invites, no fees, no ads.",
       "region": "US",
       "added_at": "2026-09-15",
-      "auto_backup": true
+      "auto_backup": true,
+      "operator_contact": ""
     }
   ]
 }
